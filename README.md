@@ -6,10 +6,12 @@
 <title>Happy Birthday My Love</title>
 
 <style>
+
+/* 🌌 Night Sky Background */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#ffd6e7,#e6ccff);
+  background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
   height:100vh;
   overflow:hidden;
   display:flex;
@@ -17,14 +19,25 @@ body{
   align-items:center;
 }
 
+/* Stars */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background-image:radial-gradient(white 1px, transparent 1px);
+  background-size:3px 3px;
+  opacity:0.3;
+}
+
 /* Glass Card */
 .card{
-  background:rgba(255,255,255,0.3);
-  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);
   padding:40px;
-  border-radius:30px;
-  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+  border-radius:25px;
   text-align:center;
+  color:white;
   z-index:5;
 }
 
@@ -46,13 +59,34 @@ button{
   height:160px;
   border-radius:20px;
   object-fit:cover;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
   animation:floatPhoto linear infinite;
 }
 
 @keyframes floatPhoto{
   from{ transform:translateY(110vh);}
   to{ transform:translateY(-20vh);}
+}
+
+/* Full Screen Viewer */
+#viewer{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+#viewer img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
 }
 
 /* Hearts */
@@ -75,8 +109,6 @@ button{
   to{ transform:translateY(110vh) rotate(360deg);}
 }
 
-h1{ color:#ff4f81; }
-
 </style>
 </head>
 
@@ -96,13 +128,17 @@ h1{ color:#ff4f81; }
 <!-- Main -->
 <div id="main" class="card" style="display:none;">
 <h1>Happy Birthday My Love ❤️</h1>
-<p>You are my happiness, my everything.</p>
-<h2>I Love You 💕</h2>
+<p>You are my happiness, my forever.</p>
+</div>
+
+<!-- Full Screen Viewer -->
+<div id="viewer" onclick="closeViewer()">
+  <img id="viewerImg">
 </div>
 
 <script>
 
-/* 🔥 PUT YOUR REAL PHOTO LINKS HERE */
+/* 🔥 ADD YOUR REAL PHOTO LINKS */
 const photos=[
 "https://picsum.photos/300/400?1",
 "https://picsum.photos/300/400?2",
@@ -115,9 +151,9 @@ function openSite(){
  document.getElementById("main").style.display="block";
  document.getElementById("music").play();
 
+ startPhotos();
  startHearts();
  startPetals();
- startPhotos();
 }
 
 /* Floating Photos */
@@ -127,11 +163,22 @@ function startPhotos(){
    img.src=photos[Math.floor(Math.random()*photos.length)];
    img.className="photo";
    img.style.left=Math.random()*100+"vw";
-   img.style.animationDuration=(Math.random()*5+6)+"s";
-   document.body.appendChild(img);
+   img.style.animationDuration=(Math.random()*6+6)+"s";
 
+   img.onclick=()=>openViewer(img.src);
+
+   document.body.appendChild(img);
    setTimeout(()=>img.remove(),12000);
  },1500);
+}
+
+/* Full Screen View */
+function openViewer(src){
+ document.getElementById("viewer").style.display="flex";
+ document.getElementById("viewerImg").src=src;
+}
+function closeViewer(){
+ document.getElementById("viewer").style.display="none";
 }
 
 /* Hearts */
