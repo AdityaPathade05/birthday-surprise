@@ -191,6 +191,191 @@ body {
   to { text-shadow: 0 0 30px rgba(255, 118, 170, 0.8), 0 0 60px rgba(255, 118, 170, 0.5); }
 }
 
+/* Clickable Word Animation */
+.cute-word {
+  display: inline-block;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  color: #ff7eb3;
+}
+
+.cute-word:hover {
+  background: rgba(255, 126, 179, 0.2);
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(255, 126, 179, 0.6);
+}
+
+.cute-word:active {
+  transform: scale(0.95);
+}
+
+/* Button Grid */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.small-btn {
+  background: rgba(255, 126, 179, 0.3);
+  border: 2px solid rgba(255, 126, 179, 0.5);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.small-btn:hover {
+  background: rgba(255, 126, 179, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 118, 170, 0.3);
+}
+
+.small-btn:active {
+  transform: scale(0.95);
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: slideIn 0.8s ease-in-out;
+}
+
+.slide.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  animation: imageZoom 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes imageZoom {
+  0% { 
+    transform: scale(0.8) rotate(-5deg);
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Slideshow Controls */
+.slideshow-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 20;
+}
+
+.slide-btn {
+  background: rgba(255, 126, 179, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-btn:hover {
+  background: rgba(255, 126, 179, 0.9);
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 118, 170, 0.5);
+}
+
+.slide-btn:active {
+  transform: scale(0.95);
+}
+
+/* Slide Counter */
+.slide-counter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 126, 179, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Close Slideshow */
+.close-slideshow {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 126, 179, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-slideshow:hover {
+  background: rgba(255, 126, 179, 0.8);
+  transform: scale(1.1);
+}
+
+/* Floating Hearts Around Slideshow */
+.slideshow-heart {
+  position: absolute;
+  font-size: 30px;
+  animation: floatAroundSlideshow 4s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatAroundSlideshow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
 </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -203,23 +388,49 @@ body {
    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">Birthday Surprise</h1>
    <p class="text-pink-200 mb-8 text-lg">A special gift awaits you...</p><button onclick="openSite()" class="cute-btn border-none py-4 px-10 text-lg text-white rounded-full cursor-pointer shadow-lg"> Open Your Surprise ✨ </button>
   </div><!-- Main Content -->
-  <div id="main" class="glass-card p-10 md:p-14 rounded-3xl text-center max-w-lg mx-4 z-20 relative hidden">
+  <div id="main" class="glass-card p-8 md:p-12 rounded-3xl text-center max-w-2xl mx-4 z-20 relative hidden overflow-y-auto max-h-[90vh]">
    <div class="text-5xl mb-4">
     🎂
    </div>
-   <h1 id="mainTitle" class="title-glow text-3xl md:text-4xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">Happy Birthday My Love ❤️</h1>
-   <p id="loveMessage" class="text-pink-100 text-xl mb-8 leading-relaxed">You are my happiness, my forever.</p>
-   <div class="flex flex-col gap-4"><button onclick="showLove()" class="cute-btn border-none py-4 px-10 text-lg text-white rounded-full cursor-pointer shadow-lg"> Tap For Love 💕 </button> <button onclick="showSpecialMessage()" class="bg-white/20 hover:bg-white/30 border border-white/30 py-3 px-8 text-white rounded-full cursor-pointer transition-all duration-300 hover:scale-105"> Special Message 💌 </button>
+   <h1 id="mainTitle" class="title-glow text-3xl md:text-4xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">Happy Birthday My Love ❤️</h1>
+   <p id="loveMessage" class="text-pink-100 text-lg mb-6 leading-relaxed">You are my happiness, my forever.</p><!-- Main Action Buttons -->
+   <div class="flex flex-col gap-4 mb-8"><button onclick="showLove()" class="cute-btn border-none py-4 px-10 text-lg text-white rounded-full cursor-pointer shadow-lg"> Tap For Love 💕 </button> <button onclick="showSpecialMessage()" class="bg-white/20 hover:bg-white/30 border border-white/30 py-3 px-8 text-white rounded-full cursor-pointer transition-all duration-300 hover:scale-105"> Special Message 💌 </button>
+   </div><!-- Interactive Buttons Grid -->
+   <div class="mb-8 p-6 bg-white/5 rounded-2xl border border-white/10">
+    <h3 class="text-pink-300 font-semibold mb-4 text-lg">Click to see my thoughts behind these words 👇</h3>
+    <div class="button-grid"><button onclick="showThought('Beautiful 💫', 'Your beauty isn\'t just what I see—it\'s the way you light up every room you enter')" class="small-btn">Beautiful 💫</button> <button onclick="showThought('Elegant 👑', 'The grace with which you carry yourself is absolutely captivating')" class="small-btn">Elegant 👑</button> <button onclick="showThought('Gorgeous 😍', 'Every time I look at you, I wonder how I got so lucky')" class="small-btn">Gorgeous 😍</button> <button onclick="showThought('Charming 💕', 'Your charm could win over anyone—but I\'m the one who gets to keep you')" class="small-btn">Charming 💕</button> <button onclick="showThought('Radiant ✨', 'You glow with a light that makes the world brighter')" class="small-btn">Radiant ✨</button> <button onclick="showThought('Stunning 🌟', 'You take my breath away every single day')" class="small-btn">Stunning 🌟</button> <button onclick="showThought('Enchanting 🪄', 'You cast a spell on me—one I never want to break')" class="small-btn">Enchanting 🪄</button> <button onclick="showThought('Kind 😇', 'Your gentle soul is more beautiful than any face could be')" class="small-btn">Kind 😇</button> <button onclick="showThought('Amazing 🌸', 'Everything you do, you do with such passion and care')" class="small-btn">Amazing 🌸</button> <button onclick="showThought('Graceful 💃', 'The way you move through life is like watching poetry in motion')" class="small-btn">Graceful 💃</button> <button onclick="showThought('Perfect 💎', 'You\'re not perfect, but you\'re perfect for me in every way')" class="small-btn">Perfect 💎</button> <button onclick="showThought('Precious 🎀', 'You\'re the greatest gift I could ever ask for')" class="small-btn">Precious 🎀</button> <button onclick="showThought('Magical 🧚', 'Being with you feels like living in a beautiful dream')" class="small-btn">Magical 🧚</button> <button onclick="showThought('Wonderful 🌷', 'You wonder me every day����I wonder how you\'re so incredible')" class="small-btn">Wonderful 🌷</button> <button onclick="showThought('Lovely 💗', 'Everything about you—inside and out—is absolutely lovely')" class="small-btn">Lovely 💗</button> <button onclick="showThought('Stunning 🦋', 'Like a butterfly, you\'ve transformed my life into something beautiful')" class="small-btn">Stunning 🦋</button>
+    </div>
+   </div><!-- Cute Words Section -->
+   <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+    <h3 class="text-pink-300 font-semibold mb-4">More things she is:</h3>
+    <div class="text-white text-lg leading-relaxed space-y-2">
+     <p><span class="cute-word" onclick="celebrateWord('Captivating', 'Your smile melts my heart and I can\'t look away')">Captivating</span>, <span class="cute-word" onclick="celebrateWord('Luminous', 'You light up my world like the sun')">luminous</span>, <span class="cute-word" onclick="celebrateWord('Breathtaking', 'You steal my breath away')">breathtaking</span></p>
+     <p><span class="cute-word" onclick="celebrateWord('Elegant', 'So elegant, so graceful')">elegant</span>, <span class="cute-word" onclick="celebrateWord('Graceful', 'Pure elegance and grace')">graceful</span>, <span class="cute-word" onclick="celebrateWord('Alluring', 'You make my heart race')">alluring</span></p>
+     <p><span class="cute-word" onclick="celebrateWord('Soulmate', 'You are my soulmate')">soulmate</span>, <span class="cute-word" onclick="celebrateWord('Angelic', 'My angel on earth')">angelic</span>, <span class="cute-word" onclick="celebrateWord('Delightful', 'You make me so happy')">delightful</span></p>
+     <p><span class="cute-word" onclick="celebrateWord('Sweet', 'My sweet darling')">sweet</span>, <span class="cute-word" onclick="celebrateWord('Enchanting', 'Absolutely enchanting')">enchanting</span>, <span class="cute-word" onclick="celebrateWord('Radiant', 'The light of my life')">radiant</span></p>
+    </div>
    </div>
   </div><!-- Photo Viewer -->
   <div id="viewer" onclick="closeViewer()" class="fixed inset-0 bg-black/90 viewer-overlay hidden justify-center items-center z-50 cursor-pointer">
-   <div class="relative"><img id="viewerImg" class="max-w-[90vw] max-h-[85vh] rounded-2xl shadow-2xl">
+   <div class="relative"><img id="viewerImg" class="max-w-[90vw] max-h-[85vh] rounded-2xl shadow-2xl" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #ff7eb3, #ff758c)'; this.alt='Photo unavailable';">
     <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 text-white/70 text-sm">
      Tap anywhere to close
     </div>
    </div>
+  </div><!-- Slideshow Viewer -->
+  <div id="slideshow" class="fixed inset-0 bg-black/95 viewer-overlay hidden z-50">
+   <div class="slideshow-container"><button onclick="closeSlideshowViewer()" class="close-slideshow">✕</button>
+    <div class="slide-counter"><span id="slideNumber">1</span> / <span id="slideTotalCount">4</span>
+    </div>
+    <div id="slidesWrapper" class="w-full h-full flex flex-col items-center justify-center relative"><!-- Slides will be generated by JavaScript -->
+    </div>
+    <div class="slideshow-controls"><button onclick="previousSlide()" class="slide-btn">❮</button> <button onclick="nextSlide()" class="slide-btn">❯</button>
+    </div>
+   </div>
   </div><!-- Love Popup -->
   <div id="lovePopup" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-gradient-to-r from-pink-500 to-rose-500 py-4 px-8 rounded-full text-white font-semibold shadow-xl hidden love-popup z-40"><span id="popupText">I Love You So Much 💖</span>
+  </div><!-- Compliment Popup -->
+  <div id="complimentPopup" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-pink-500 to-rose-500 py-6 px-8 rounded-2xl text-white font-semibold shadow-2xl hidden love-popup z-40 text-center"><span id="complimentText">You're absolutely gorgeous 😍</span>
   </div><!-- Special Message Modal -->
   <div id="specialModal" class="fixed inset-0 bg-black/80 viewer-overlay hidden justify-center items-center z-50 p-4">
    <div class="glass-card p-8 md:p-12 rounded-3xl text-center max-w-md relative"><button onclick="closeSpecialModal()" class="absolute top-4 right-4 text-white/60 hover:text-white text-2xl">✕</button>
@@ -227,7 +438,7 @@ body {
      💌
     </div>
     <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Playfair Display', serif;">To My Dearest</h2>
-    <p class="text-pink-100 leading-relaxed mb-6">Every moment with you is a treasure. Your smile lights up my world, and your love makes every day worth living. Here's to another year of beautiful memories together.</p>
+    <p class="text-pink-100 leading-relaxed mb-6">Every moment with you is a treasure. Your smile lights up my world, and your love makes every day worth living. Here's to another year of beautiful memories together. You're my dream girl, my everything, and I'm so blessed to celebrate you today.</p>
     <p class="text-pink-300 text-lg font-semibold">Forever Yours 💗</p>
    </div>
   </div>
@@ -248,8 +459,8 @@ let config = { ...defaultConfig };
 
 // Sample photos - replace with your own
 const photos = [
-  "https://drive.google.com/file/d/1RGVfOv7FJq7FGnRphD74NI8xc5vbBJmW/view?usp=sharing",
-  "https://drive.google.com/file/d/1RGVfOv7FJq7FGnRphD74NI8xc5vbBJmW/view?usp=sharing",
+  "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300&h=400&fit=crop",
+  "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300&h=400&fit=crop",
   "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=300&h=400&fit=crop",
   "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=300&h=400&fit=crop"
 ];
@@ -260,9 +471,11 @@ const loveMessages = [
   "Forever & Always 💗",
   "My Heart Is Yours 💝",
   "You Are My Sunshine ☀️",
-  "Best Birthday Person Ever 🎂",
+  "Best Birthday Person Ever 🎉",
   "You Make Me So Happy 😊",
-  "My Favorite Human 💜"
+  "My Favorite Human 💜",
+  "You're My Everything 🌹",
+  "Always In My Heart 💓"
 ];
 
 let photoInterval, heartInterval, petalInterval;
@@ -453,7 +666,7 @@ function showLove() {
   popupText.textContent = message;
   popup.classList.remove('hidden');
   popup.style.animation = 'none';
-  popup.offsetHeight; // Trigger reflow
+  popup.offsetHeight;
   popup.style.animation = 'popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
   
   // Create celebration effect
@@ -466,9 +679,67 @@ function showLove() {
     }, i * 100);
   }
   
+  // Open slideshow after celebration
   setTimeout(() => {
     popup.classList.add('hidden');
-  }, 3000);
+    openSlideshowViewer();
+  }, 2500);
+}
+
+// Show Personalized Thought
+function showThought(title, thought) {
+  const popup = document.getElementById('complimentPopup');
+  const complimentText = document.getElementById('complimentText');
+  
+  complimentText.innerHTML = `<div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">${title}</div><div style="font-size: 14px; font-weight: 400; line-height: 1.5;">"${thought}"</div>`;
+  popup.classList.remove('hidden');
+  popup.style.animation = 'none';
+  popup.style.maxWidth = '320px';
+  popup.offsetHeight;
+  popup.style.animation = 'popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+  
+  // Create celebration effect
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth / 2 + (Math.random() - 0.5) * 150,
+        window.innerHeight / 2 + (Math.random() - 0.5) * 150
+      );
+    }, i * 80);
+  }
+  
+  setTimeout(() => {
+    popup.classList.add('hidden');
+    popup.style.maxWidth = 'auto';
+  }, 3500);
+}
+
+// Celebrate Word
+function celebrateWord(title, message) {
+  const popup = document.getElementById('complimentPopup');
+  const complimentText = document.getElementById('complimentText');
+  
+  complimentText.innerHTML = `<div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">${title} 💕</div><div style="font-size: 14px; font-weight: 400; line-height: 1.5;">"${message}"</div>`;
+  popup.classList.remove('hidden');
+  popup.style.animation = 'none';
+  popup.style.maxWidth = '320px';
+  popup.offsetHeight;
+  popup.style.animation = 'popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+  
+  // Create celebration effect
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      createHeartBurst(
+        window.innerWidth / 2 + (Math.random() - 0.5) * 100,
+        window.innerHeight / 3 + (Math.random() - 0.5) * 100
+      );
+    }, i * 60);
+  }
+  
+  setTimeout(() => {
+    popup.classList.add('hidden');
+    popup.style.maxWidth = 'auto';
+  }, 2200);
 }
 
 // Special Message Modal
@@ -492,8 +763,124 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeViewer();
     closeSpecialModal();
+    closeSlideshowViewer();
+  }
+  if (e.key === 'ArrowLeft') {
+    previousSlide();
+  }
+  if (e.key === 'ArrowRight') {
+    nextSlide();
   }
 });
+
+// Slideshow Variables
+let currentSlideIndex = 0;
+let slides = [];
+
+// Open Slideshow
+function openSlideshowViewer() {
+  const slideshow = document.getElementById('slideshow');
+  const slidesWrapper = document.getElementById('slidesWrapper');
+  
+  // Clear previous slides
+  slidesWrapper.innerHTML = '';
+  slides = [];
+  
+  // Create slides for each photo
+  photos.forEach((photoUrl, index) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    if (index === 0) slide.classList.add('active');
+    
+    const img = document.createElement('img');
+    img.src = photoUrl;
+    img.loading = 'lazy';
+    img.onerror = function() {
+      this.style.background = 'linear-gradient(135deg, #ff7eb3, #ff758c)';
+      this.alt = 'Photo unavailable';
+    };
+    
+    slide.appendChild(img);
+    slidesWrapper.appendChild(slide);
+    slides.push(slide);
+  });
+  
+  // Update counter
+  document.getElementById('slideTotalCount').textContent = photos.length;
+  currentSlideIndex = 0;
+  updateSlideNumber();
+  
+  slideshow.classList.remove('hidden');
+  
+  // Add floating hearts around slideshow
+  createSlideshowHearts();
+}
+
+// Close Slideshow
+function closeSlideshowViewer() {
+  document.getElementById('slideshow').classList.add('hidden');
+}
+
+// Next Slide
+function nextSlide() {
+  if (slides.length === 0) return;
+  
+  slides[currentSlideIndex].classList.remove('active');
+  currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+  slides[currentSlideIndex].classList.add('active');
+  
+  updateSlideNumber();
+  createSlideshowHearts();
+}
+
+// Previous Slide
+function previousSlide() {
+  if (slides.length === 0) return;
+  
+  slides[currentSlideIndex].classList.remove('active');
+  currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+  slides[currentSlideIndex].classList.add('active');
+  
+  updateSlideNumber();
+  createSlideshowHearts();
+}
+
+// Update Slide Number
+function updateSlideNumber() {
+  document.getElementById('slideNumber').textContent = currentSlideIndex + 1;
+}
+
+// Create Floating Hearts Around Slideshow
+function createSlideshowHearts() {
+  const wrapper = document.getElementById('slidesWrapper');
+  
+  // Remove old hearts
+  const oldHearts = wrapper.querySelectorAll('.slideshow-heart');
+  oldHearts.forEach(heart => heart.remove());
+  
+  // Create new hearts
+  const hearts = ['💖', '💕', '💗', '💝', '🩷'];
+  const positions = [
+    { top: '10%', left: '5%', delay: '0s' },
+    { top: '10%', right: '5%', delay: '0.5s' },
+    { bottom: '15%', left: '8%', delay: '1s' },
+    { bottom: '15%', right: '8%', delay: '1.5s' },
+    { top: '50%', left: '2%', delay: '0.3s' },
+    { top: '50%', right: '2%', delay: '0.8s' }
+  ];
+  
+  positions.forEach((pos, index) => {
+    const heart = document.createElement('div');
+    heart.className = 'slideshow-heart';
+    heart.innerHTML = hearts[index % hearts.length];
+    heart.style.top = pos.top || 'auto';
+    heart.style.bottom = pos.bottom || 'auto';
+    heart.style.left = pos.left || 'auto';
+    heart.style.right = pos.right || 'auto';
+    heart.style.animationDelay = pos.delay;
+    wrapper.appendChild(heart);
+  });
+}
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9d890031f789e1',t:'MTc3MDQxMTE4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9db734d29189e1',t:'MTc3MDQxMzA4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
