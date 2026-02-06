@@ -248,7 +248,7 @@ let config = { ...defaultConfig };
 
 // Sample photos - replace with your own
 const photos = [
-  "[https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=300&h=400&fit=crop](https://drive.google.com/file/d/1RGVfOv7FJq7FGnRphD74NI8xc5vbBJmW/view?usp=sharing)",
+  "https://drive.google.com/file/d/1RGVfOv7FJq7FGnRphD74NI8xc5vbBJmW/view?usp=sharing",
   "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=300&h=400&fit=crop",
   "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=300&h=400&fit=crop",
   "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=300&h=400&fit=crop"
