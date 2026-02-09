@@ -521,8 +521,8 @@ body {
       <p>Those late-night talks where we share our dreams, fears, and deepest thoughts. Your voice is the most comforting sound to me.</p>
      </div>
      <div class="bg-white/10 p-4 rounded-xl border border-pink-400/30">
-      <p class="text-white font-semibold mb-2">🌅 Sunrise Moments:</p>
-      <p>Waking up next to you, seeing the morning light on your face. These moments make me realize how grateful I am for you.</p>
+      <p class="text-white font-semibold mb-2">🌆 Mumbai Trip Moments:</p>
+      <p>That Mumbai trip will always be special to me. Sitting together in the bus, stealing that kiss… it felt like time stopped for a moment.</p>
      </div>
      <div class="bg-white/10 p-4 rounded-xl border border-pink-400/30">
       <p class="text-white font-semibold mb-2">🎵 Our Songs:</p>
