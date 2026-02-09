@@ -593,7 +593,7 @@ let config = { ...defaultConfig };
 
 // Cute soft toy plushies with thoughts
 const photos=[
-"https://raw.githubusercontent.com/AdityaPathade05/birthday-surprise/main/ChatGPT%20Image%20Feb%209,%202026,%2006_19_07%20PM.png"
+"https://instasize.com/p/b6b4e72f3559565766db62e50ca38eac5d009178fef18031d82c68a9dbeec1b4"
 ];
 
 const loveMessages = [
