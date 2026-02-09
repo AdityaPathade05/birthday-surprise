@@ -521,8 +521,8 @@ body {
       <p>Those late-night talks where we share our dreams, fears, and deepest thoughts. Your voice is the most comforting sound to me.</p>
      </div>
      <div class="bg-white/10 p-4 rounded-xl border border-pink-400/30">
-      <p class="text-white font-semibold mb-2">🌆 Mumbai Trip Moments:</p>
-      <p>That Mumbai trip will always be special to me. Sitting together in the bus, stealing that kiss… it felt like time stopped for a moment.</p>
+      <p class="text-white font-semibold mb-2">🌅 Sunrise Moments:</p>
+      <p>Waking up next to you, seeing the morning light on your face. These moments make me realize how grateful I am for you.</p>
      </div>
      <div class="bg-white/10 p-4 rounded-xl border border-pink-400/30">
       <p class="text-white font-semibold mb-2">🎵 Our Songs:</p>
@@ -593,7 +593,7 @@ let config = { ...defaultConfig };
 
 // Cute soft toy plushies with thoughts
 const photos = [
-  {"https://raw.githubusercontent.com/AdityaPathade05/birthday-surprise/main/ChatGPT%20Image%20Feb%209,%202026,%2006_19_07%20PM.png"},
+  { url: "https://images.unsplash.com/photo-1590080876614-bc517ee5a48c?w=300&h=400&fit=crop", thought: "I'm thinking of you 🥰" },
   { url: "https://images.unsplash.com/photo-1577720643272-265f434d7ba0?w=300&h=400&fit=crop", thought: "Missing your cuddles 💕" },
   { url: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=400&fit=crop", thought: "Forever yours 💗" },
   { url: "https://images.unsplash.com/photo-1585399818219-39ae332b7e9b?w=300&h=400&fit=crop", thought: "You're my favorite 🎀" }
@@ -1109,5 +1109,6 @@ function createSlideshowHearts() {
   });
 }
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb32b95d48cefc3',t:'MTc3MDYzODA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb39ab69050b5d1',t:'MTc3MDY0MjU5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>{e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
