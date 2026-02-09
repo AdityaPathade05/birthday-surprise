@@ -592,11 +592,8 @@ const defaultConfig = {
 let config = { ...defaultConfig };
 
 // Cute soft toy plushies with thoughts
-const photos = [
-  { url: "https://images.unsplash.com/photo-1590080876614-bc517ee5a48c?w=300&h=400&fit=crop", thought: "I'm thinking of you 🥰" },
-  { url: "https://images.unsplash.com/photo-1577720643272-265f434d7ba0?w=300&h=400&fit=crop", thought: "Missing your cuddles 💕" },
-  { url: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=400&fit=crop", thought: "Forever yours 💗" },
-  { url: "https://images.unsplash.com/photo-1585399818219-39ae332b7e9b?w=300&h=400&fit=crop", thought: "You're my favorite 🎀" }
+const photos=[
+"https://raw.githubusercontent.com/AdityaPathade05/birthday-surprise/main/ChatGPT%20Image%20Feb%209,%202026,%2006_19_07%20PM.png"
 ];
 
 const loveMessages = [
